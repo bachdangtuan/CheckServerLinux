@@ -18,8 +18,16 @@ disklocal=$(df -h / | awk 'NR==2 {print $2}')
 diskused=$(df -h / | awk 'NR==2 {print $3}')
 
 
+# Check danh sách container hoạt động
+containers=$(sudo docker ps)
 
-# Xuất dữ liệu
+
+
+
+
+
+
+#-------- Xuất dữ liệu----------------------
 echo "$usedCPU"
 echo "$totalRam"
 echo "$usedRam"
@@ -27,3 +35,4 @@ echo "$myip"
 echo "$nameserver"
 echo "$disklocal"
 echo "$diskused"
+echo "$containers"
