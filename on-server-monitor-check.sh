@@ -4,7 +4,7 @@
 ip=10.0.0.20
 passServer=123123
 
-ketqua=$(sshpass -p $passServer ssh ubuntu@$ip 'cd /home/ubuntu/check && bash check-server.sh')
+ketqua=$(sshpass -p $passServer ssh ubuntu@$ip 'cd /home/ubuntu/CheckServerLinux && bash check-server.sh')
 # Đọc kết quả
 readarray -t result_array <<< "$ketqua"
 
