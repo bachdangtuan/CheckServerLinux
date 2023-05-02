@@ -4,7 +4,7 @@
 ip=10.0.0.20
 passServer=123123
 
-ketqua=$(sshpass -p $passServer ssh ubuntu@$ip 'cd /home/ubuntu/check && bash check_info.sh')
+ketqua=$(sshpass -p $passServer ssh ubuntu@$ip 'cd /home/ubuntu/check && bash check-server.sh')
 # Đọc kết quả
 readarray -t result_array <<< "$ketqua"
 
@@ -38,20 +38,22 @@ arrRam=($(echo "$listRamcontainer" | cut -d " " -f 1-))
 
 for (( i=0; i<${#arrContainer[@]}; i++ ));
 do  
-    # Call API ở đây
+    # Call API đến service container
     container="${arrContainer[$i]}"
     cpu="${arrCPU[$i]}"
     ram="${arrRam[$i]}"
     echo "Container $container sử dụng cpu là: $cpu  sử dụng ram là: $ram " 
 
-    wget --header="Content-Type: application/json" \
---post-data='{"ipaddress": "'"$host_ip"'",
-    "nameServiceContainer": "'"$container"'",
-    "cpu": "'"$cpu"'",
-    "ram": "'"$ram"'",
-    "disk": "'"20%"'",
-    "belongtoVirtualMachine": "1",
-    }' \
-http://localhost:5000/api/servicecontainer/create
+wget --header="Content-Type: application/json" \
+     --post-data='{"ipaddress": "'"$ipserver"'",
+                    "nameServiceContainer": "'"$container"'",
+                    "cpu": "'"$cpu"'",
+                    "ram": "'"$ram"'",
+                    "disk": "20%",
+                    "belongtoVirtualMachine": 1
+                   }' \
+     http://localhost:5000/api/servicecontainer/create \
+     -O /dev/null
+
 
 done
