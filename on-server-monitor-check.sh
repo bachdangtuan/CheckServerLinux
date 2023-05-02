@@ -30,6 +30,19 @@ echo 'name server' $nameserver
 echo 'dung lượng đĩa' $disklocal
 echo 'dung lượng đĩa sử dụng' $diskused
 
+wget --header="Content-Type: application/json" \
+     --post-data='{"ipaddress": "'"$ipserver"'",
+                    "nameVirtualMachine": "'"$nameserver"'",
+                    "cpu": "'"$cpu"'",
+                    "ram": "'"$ram"'",
+                    "disk": "'"$diskused"'",
+                    "belongtoVirtualMachine": 1
+                   }' \
+     http://localhost:5000/api/virtualmachine/create \
+     -O /dev/null
+
+
+
 echo ----- Service container -----
 
 arrContainer=($(echo "$listcontainers" | cut -d " " -f 1-))
