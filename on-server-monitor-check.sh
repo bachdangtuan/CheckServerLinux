@@ -33,8 +33,8 @@ echo 'dung lượng đĩa sử dụng' $diskused
 wget --header="Content-Type: application/json" \
      --post-data='{"ipaddress": "'"$ipserver"'",
                     "nameVirtualMachine": "'"$nameserver"'",
-                    "cpu": "'"$cpu"'",
-                    "ram": "'"$ram"'",
+                    "cpu": "'"$cpuUsed"'",
+                    "ram": "'"$usedRam"'",
                     "disk": "'"$diskused"'",
                     "belongtoVirtualMachine": 1
                    }' \
