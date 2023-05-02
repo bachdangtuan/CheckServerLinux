@@ -43,5 +43,15 @@ do
     cpu="${arrCPU[$i]}"
     ram="${arrRam[$i]}"
     echo "Container $container sử dụng cpu là: $cpu  sử dụng ram là: $ram " 
-done
 
+    wget --header="Content-Type: application/json" \
+--post-data='{"ipaddress": "'"$host_ip"'",
+    "nameServiceContainer": "'"$container"'",
+    "cpu": "'"$cpu"'",
+    "ram": "'"$ram"'",
+    "disk": "'"20%"'",
+    "belongtoVirtualMachine": "1",
+    }' \
+http://localhost:5000/api/servicecontainer/create
+
+done
