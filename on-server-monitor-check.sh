@@ -15,6 +15,11 @@ ipserver=${result_array[3]}
 nameserver=${result_array[4]}
 disklocal=${result_array[5]}
 diskused=${result_array[6]}
+
+
+
+
+
 # Container Status
 listcontainers=${result_array[7]}
 listCPUcontainer=${result_array[8]}
@@ -31,12 +36,12 @@ echo 'dung lượng đĩa' $disklocal
 echo 'dung lượng đĩa sử dụng' $diskused
 
 wget --header="Content-Type: application/json" \
-     --post-data='{"ipaddress": "'"$ipserver"'",
+     --post-data='{"ipaddress": "'"$ipserver%"'",
                     "nameVirtualMachine": "'"$nameserver"'",
                     "cpu": "'"$cpuUsed"'",
                     "ram": "'"$usedRam"'",
                     "disk": "'"$diskused"'",
-                    "belongtoVirtualMachine": 1
+                    "belongtoPhysicalMachine": 1
                    }' \
      http://localhost:5000/api/virtualmachine/create \
      -O /dev/null
