@@ -5,8 +5,17 @@ ip=10.0.0.20
 passServer='123123'
 username='ubuntu'
 
-declare -A arrayPhysicalMachine
-arrayPhysicalMachine=([isofh-8]=1 [isofh-89]=2 [isofh-92]=3)
+arrayPhysicalMachineIsofh=([isofh-8]=1 [isofh-89]=2 [isofh-92]=3 [isofh-119]=4 [isofh-248]=5 [isofh-250]=6 [isofh-252]=7 [isofh-254]=8)
+arrayPhysicalMachineBVE=([bve-70]=9 [bve-254]=10)
+arrayPhysicalMachineMedi=([medi-91]=11 [medi-92]=12 [medi-93]=13 [medi-94]=14)
+arrayPhysicalMachineXanhPhon=([xanhphon-10]=15 [xanhphon-11]=16 [xanhphon-12]=17)
+arrayPhysicalMachineDKTH=([dkth-53]=18 [dkth-54]=19 [dkth-56]=20 [dkth-11]=21 [dkth-12]=22 [dkth-13]=23)
+arrayPhysicalMachinePhoi=([phoi-249]=24 [phoi-250]=25 [phoi-252]=26 [phoi-254]=27)
+arrayPhysicalMachineDHY=([dhy-165]=28 [dhy-167]=29 [dhy-181]=30)
+arrayPhysicalMachineTTTM=([tttm-233]=31 [tttm-234]=32)
+arrayPhysicalMachineTA=([ta-104]=33 )
+arrayPhysicalMachineYTCC=([ytcc-2121]=34 [ytcc-2123]=35)
+arrayPhysicalMachineYKHN=([ykhn-104]=36 )
 
 ketqua=$(sshpass -p $passServer ssh $username@$ip 'cd /home/ubuntu/CheckServerLinux && bash check-server.sh')
 # Đọc kết quả
@@ -47,7 +56,7 @@ wget --header="Content-Type: application/json" \
                     "usedram": "'"$usedRam"'",
                     "disk": "'"$disklocal"'",
                     "diskused": "'"$diskused"'",                    
-                    "belongtoPhysicalMachine": "'"${arrayPhysicalMachine[isofh-92]}"'"
+                    "belongtoPhysicalMachine": "'"${arrayPhysicalMachineIsofh[isofh-92]}"'"
                    }' \
      http://localhost:5000/api/virtualmachine/create \
      -O /dev/null
