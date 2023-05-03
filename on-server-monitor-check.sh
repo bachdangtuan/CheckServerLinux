@@ -2,9 +2,13 @@
 # ip server cần check
 # Variable Enviroiment
 ip=10.0.0.20
-passServer=123123
+passServer='123123'
+username='ubuntu'
 
-ketqua=$(sshpass -p $passServer ssh ubuntu@$ip 'cd /home/ubuntu/CheckServerLinux && bash check-server.sh')
+declare -A arrayPhysicalMachine
+arrayPhysicalMachine=([isofh-8]=1 [isofh-89]=2 [isofh-92]=3)
+
+ketqua=$(sshpass -p $passServer ssh $username@$ip 'cd /home/ubuntu/CheckServerLinux && bash check-server.sh')
 # Đọc kết quả
 readarray -t result_array <<< "$ketqua"
 
@@ -43,7 +47,7 @@ wget --header="Content-Type: application/json" \
                     "usedram": "'"$usedRam"'",
                     "disk": "'"$disklocal"'",
                     "diskused": "'"$diskused"'",                    
-                    "belongtoPhysicalMachine": 1
+                    "belongtoPhysicalMachine": "'"${arrayPhysicalMachine[isofh-92]}"'"
                    }' \
      http://localhost:5000/api/virtualmachine/create \
      -O /dev/null
