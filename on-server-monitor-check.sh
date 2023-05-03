@@ -39,8 +39,10 @@ wget --header="Content-Type: application/json" \
      --post-data='{"ipaddress": "'"$ipserver%"'",
                     "nameVirtualMachine": "'"$nameserver"'",
                     "cpu": "'"$cpuUsed"'",
-                    "ram": "'"$usedRam"'",
-                    "disk": "'"$diskused"'",
+                    "ram": "'"$totalRam"'",
+                    "usedram": "'"$usedRam"'",
+                    "disk": "'"$disklocal"'",
+                    "diskused": "'"$diskused"'",                    
                     "belongtoPhysicalMachine": 1
                    }' \
      http://localhost:5000/api/virtualmachine/create \
