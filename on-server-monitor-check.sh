@@ -5,6 +5,7 @@ URL_API='http://localhost:5000'
 ip=10.0.0.54
 passServer='Isofh#r0Ot@2023*'
 username='root'
+pathscript='isofh'
 # Isofh
 isofh8=1
 isofh89=2
@@ -54,7 +55,7 @@ ytcc2123=34
 ykhn104=36
 
 
-ketqua=$(sshpass -p $passServer ssh $username@$ip "cd /home/${username} && bash test.sh")
+ketqua=$(sshpass -p $passServer ssh $username@$ip "cd /home/${pathscript} && bash test.sh")
 # Đọc kết quả
 readarray -t result_array <<< "$ketqua"
 
