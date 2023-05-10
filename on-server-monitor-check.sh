@@ -8,12 +8,12 @@ username='root'
 # Isofh
 isofh8=1
 isofh89=2
-isofh92=1
-isofh119=2
-isofh248=1
-isofh250=2
-isofh252=1
-isofh254=2
+isofh92=3
+isofh119=4
+isofh248=5
+isofh250=6
+isofh252=7
+isofh254=8
 # Viện E
 bve70=9
 bve254=10
