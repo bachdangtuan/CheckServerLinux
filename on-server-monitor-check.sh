@@ -119,7 +119,7 @@ curl -X POST ${URL_API}/api/servicecontainer/create \
      "ram": "'"$ram"'",
      "disk": "20%",
      "belongtoVirtualMachine": 1
- }'
+     }'
 
 }
 
