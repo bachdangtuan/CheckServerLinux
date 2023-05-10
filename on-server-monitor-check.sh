@@ -6,6 +6,7 @@ ip=10.0.0.54
 passServer='Isofh#r0Ot@2023*'
 username='root'
 pathscript='isofh'
+idMayAo=1
 # Isofh
 isofh8=1
 isofh89=2
@@ -117,7 +118,7 @@ postAPIContainerStatus(){
                          "nameServiceContainer": "'"$container"'",
                          "cpu": "'"$cpu"'",
                          "ram": "'"$ram"'",
-                         "belongtoVirtualMachine": 1
+                         "belongtoVirtualMachine": "'"$idMayAo"'"
                     }' \
           http://localhost:5000/api/servicecontainer/create \
           -O /dev/null
