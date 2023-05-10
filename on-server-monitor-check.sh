@@ -1,21 +1,58 @@
 #!bin/bash
 # ip server cần check
 # Variable Enviroiment
+URL_API='http://localhost:5000'
 ip=10.0.0.54
 passServer='Isofh#r0Ot@2023*'
 username='root'
+# Isofh
+isofh8=1
+isofh89=2
+isofh92=1
+isofh119=2
+isofh248=1
+isofh250=2
+isofh252=1
+isofh254=2
+# Viện E
+bve70=9
+bve254=10
+# Medi
+medi91=11
+medi92=12
+medi93=13
+medi94=14
+# SanhPhon
+xanhphon10=15
+xanhphon11=16
+xanhphon12=17
+# DKTH
+dkth53=18
+dkth54=19
+dkth56=20
+dkth11=21
+dkth12=22
+dkth13=23
+# Phoi
+phoi249=24
+phoi250=25
+phoi252=26
+phoi254=27
+# DHY
+dhy165=28
+dhy167=29
+dhy181=30
+# TTTM
+tttm233=31
+tttm234=32
+# TA
+ta104=33
+# YTCC
+ytcc2121=34
+ytcc2123=34
+# YKHN
+ykhn104=36
 
-arrayPhysicalMachineIsofh=([isofh-8]=1 [isofh-89]=2 [isofh-92]=3 [isofh-119]=4 [isofh-248]=5 [isofh-250]=6 [isofh-252]=7 [isofh-254]=8);
-arrayPhysicalMachineBVE=([bve-70]=9 [bve-254]=10);
-arrayPhysicalMachineMedi=([medi-91]=11 [medi-92]=12 [medi-93]=13 [medi-94]=14);
-arrayPhysicalMachineXanhPhon=([xanhphon-10]=15 [xanhphon-11]=16 [xanhphon-12]=17);
-arrayPhysicalMachineDKTH=([dkth-53]=18 [dkth-54]=19 [dkth-56]=20 [dkth-11]=21 [dkth-12]=22 [dkth-13]=23);
-arrayPhysicalMachinePhoi=([phoi-249]=24 [phoi-250]=25 [phoi-252]=26 [phoi-254]=27);
-arrayPhysicalMachineDHY=([dhy-165]=28 [dhy-167]=29 [dhy-181]=30);
-arrayPhysicalMachineTTTM=([tttm-233]=31 [tttm-234]=32);
-arrayPhysicalMachineTA=([ta-104]=33 );
-arrayPhysicalMachineYTCC=([ytcc-2121]=34 [ytcc-2123]=35);
-arrayPhysicalMachineYKHN=([ykhn-104]=36 );
 
 ketqua=$(sshpass -p $passServer ssh $username@$ip 'cd /home/isofh && bash test.sh')
 # Đọc kết quả
@@ -45,19 +82,17 @@ echo 'dung lượng đĩa' $disklocal
 echo 'dung lượng đĩa sử dụng' $diskused
 
 postAPIServerStatus(){
-     wget --header="Content-Type: application/json" \
-          --post-data='{"ipaddress": "'"$ipserver%"'",
-                         "nameVirtualMachine": "'"$nameserver"'",
-                         "cpu": "'"$cpuUsed"'",
-                         "ram": "'"$totalRam"'",
-                         "usedram": "'"$usedRam"'",
-                         "disk": "'"$disklocal"'",
-                         "diskused": "'"$diskused"'",                    
-                         "belongtoPhysicalMachine": "'"${arrayPhysicalMachineIsofh[isofh-92]}"'"
-                    }' \
-          http://localhost:5000/api/virtualmachine/create \
-          -O /dev/null
-
+curl -X POST ${URL_API}/api/virtualmachine/create \
+-H "Content-Type: application/json" \
+-d '{"ipaddress": "'"$ipserver"'",
+     "nameVirtualMachine": "'"$nameserver"'",
+     "cpu": "'"$cpuUsed"'",
+     "ram": "'"$totalRam"'",
+     "usedram": "'"$usedRam"'",
+     "disk": "'"$disklocal"'",
+     "diskused": "'"$diskused"'",                    
+     "belongtoPhysicalMachine": "'"$isofh119"'"
+     }'
 }
 
 
