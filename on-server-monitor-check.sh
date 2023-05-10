@@ -98,10 +98,10 @@ curl -X POST ${URL_API}/api/virtualmachine/create \
 
 echo ----- Service container -----
 
-postAPIContainerStatus(){
      arrContainer=($(echo "$listcontainers" | cut -d " " -f 1-))
      arrCPU=($(echo "$listCPUcontainer" | cut -d " " -f 1-))
      arrRam=($(echo "$listRamcontainer" | cut -d " " -f 1-))
+postAPIContainerStatus(){
 
      for (( i=0; i<${#arrContainer[@]}; i++ ));
      do  
