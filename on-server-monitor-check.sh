@@ -55,7 +55,7 @@ ytcc2123=34
 ykhn104=36
 
 
-ketqua=$(sshpass -p $passServer ssh $username@$ip "cd /home/${pathscript} && bash test.sh")
+ketqua=$(sshpass -p $passServer ssh $username@$ip "cd /home/${pathscript}/monitorserver && bash monitorScriptCheck.sh")
 # Đọc kết quả
 readarray -t result_array <<< "$ketqua"
 
