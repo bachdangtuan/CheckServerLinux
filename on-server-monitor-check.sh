@@ -111,17 +111,15 @@ postAPIContainerStatus(){
      ram="${arrRam[$i]}"
      echo "Container $container sử dụng cpu là: $cpu  sử dụng ram là: $ram " 
 
-     wget --header="Content-Type: application/json" \
-          --post-data='{"ipaddress": "'"$ipserver"'",
-                         "nameServiceContainer": "'"$container"'",
-                         "cpu": "'"$cpu"'",
-                         "ram": "'"$ram"'",
-                         "disk": "20%",
-                         "belongtoVirtualMachine": 1
-                    }' \
-          http://localhost:5000/api/servicecontainer/create \
-          -O /dev/null
-     done
+curl -X POST ${URL_API}/api/servicecontainer/create \
+-H "Content-Type: application/json" \
+-d '{"ipaddress": "'"$ipserver"'",
+     "nameServiceContainer": "'"$container"'",
+     "cpu": "'"$cpu"'",
+     "ram": "'"$ram"'",
+     "disk": "20%",
+     "belongtoVirtualMachine": 1
+ }'
 
 }
 
