@@ -4,11 +4,12 @@
 
 totalRam=$(free -ht | awk 'NR==2{print $2}')
 usedRam=$(free -ht | awk 'NR==2{print $3}')
+networkCard=eno16780032
 
 # Check CPU
 usedCPU=$(top -n 1 -b | grep '%Cpu(s)' | awk '{print $2+$4}')
 # Check dia chi IP
-myip=$(ip addr show ens192 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1 | head -n 1)
+myip=$(ip addr show $networkCard | grep "inet\b" | awk '{print $2}' | cut -d/ -f1 | head -n 1)
 
 # Check tên máy chủ
 nameserver=$(hostname)
